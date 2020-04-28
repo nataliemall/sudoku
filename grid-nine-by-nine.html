@@ -160,26 +160,21 @@ tr.bigNumber{
   function addGivenNumbers2(i){
     var cellNum = document.getElementById(`td${numberOnList}`);
     var text = document.createTextNode(stringOfNums[i]);
-    cellNum.appendChild(text);
+    // cellNum.appendChild(text);
+
+    text_string = text.toString()
+    if (stringOfNums[i] !== "0"){
+      console.log('the text is ', text)
+      cellNum.appendChild(text);
+  }
   }
 
 
-  function giveIdNums() {
-    cells.forEach(row => {
-      row.forEach(cell => {
-        var numberOnList = i.toString();
-        // var num = 15;
-        // var n = num.toString();
-        
-    
-        console.log(numberOnList)
-        // cell.getElementById('td1').innerHTML = "Test"
-         
-      })
-    })
-  }
 
 
+
+
+// labels each grid element with ID 0 - 80 
 var nodes = document.querySelectorAll("td");
 for(var i = 0; i < nodes.length; i++) {
   var iString = i.toString();
@@ -200,6 +195,22 @@ while (i < 81) {
 
   console.log(cells)
 
+
+function zeroNums() {
+  cells.forEach(row => {
+      row.forEach(cell => {
+        if (cell.id === 0){
+          console.log('This ID is zero:', cell.id)
+        }
+
+        // var numberOnList = i.toString();
+        // console.log(numberOnList)
+         
+      })
+    })
+  }
+
+zeroNums()
   // addGivenNumbers()
   
 
