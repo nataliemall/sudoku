@@ -1,0 +1,230 @@
+<style>
+td {
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+
+}
+
+table { border-collapse: collapse; 
+  font-size: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center}
+
+tr, td { padding: 0; }
+
+
+td.highlight{
+  background: #cc0000;
+}
+
+td.rightBorder {
+  border-right: 3.5px solid black
+}
+
+tr.bottomBorder{
+  border-bottom: 3.5px solid black;
+}
+
+tr.topBorder{
+  border-top: 3.5px solid black;
+}
+
+td.leftBorder{
+  border-left: 3.5px solid black;
+}
+
+tr.bigNumber{
+  text-align:center;
+  /*font-size: 1.5em;*/
+  background: #b3e6ff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+}
+
+
+
+
+
+</style>
+
+<table>
+  <tr class = "topBorder bigNumber">
+    <td class = "leftBorder" id = "td0"></td>
+    <td id = "td1" ></td>
+    <td class = "rightBorder" id = "td2">  </td>
+    <td id = "td3"></td>
+    <td id = "td4"></td>
+    <td class = "rightBorder" id = "td5"></td>
+    <td id = "td6"></td>
+    <td id = "td7"></td>
+    <td class = "rightBorder" id = "td8"></td>
+  <tr>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr class = bottomBorder>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr class = bottomBorder>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+  <tr class = bottomBorder>
+    <td class = "leftBorder"></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+
+</table>
+
+
+
+
+
+<script>
+
+  stringOfNums = '004300209005009001070060043006002087190007400050083000600000105003508690042910300'
+  console.log(stringOfNums[2])
+  const rows = Array.from(document.querySelectorAll('tr'));
+  const cells = rows.map(
+    r => Array.from(r.querySelectorAll('td'))
+    )
+
+  // numberOnList = '8'
+  function addGivenNumbers2(i){
+    var cellNum = document.getElementById(`td${numberOnList}`);
+    var text = document.createTextNode(stringOfNums[i]);
+    cellNum.appendChild(text);
+  }
+
+
+  function giveIdNums() {
+    cells.forEach(row => {
+      row.forEach(cell => {
+        var numberOnList = i.toString();
+        // var num = 15;
+        // var n = num.toString();
+        
+    
+        console.log(numberOnList)
+        // cell.getElementById('td1').innerHTML = "Test"
+         
+      })
+    })
+  }
+
+
+var nodes = document.querySelectorAll("td");
+for(var i = 0; i < nodes.length; i++) {
+  var iString = i.toString();
+  console.log('iString is ', iString)
+  nodes[i].setAttribute("id", `td${iString}`);
+}
+
+
+var i = 0;
+while (i < 81) {
+  // text += "The number is " + i;
+  var numberOnList = i.toString(); 
+  addGivenNumbers2(i)
+  i++;
+  // console.log(numberOnList);
+
+}
+
+  console.log(cells)
+
+  // addGivenNumbers()
+  
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- foreach number, assign that class and put it where it goes
+
+ -->
