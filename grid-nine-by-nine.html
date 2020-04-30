@@ -14,8 +14,13 @@ table { border-collapse: collapse;
 tr, td { padding: 0; }
 
 
-td.highlight{
-  background: #cc0000;
+td.preFilled{
+  /*background: #cc0000;*/
+  background: #b3e6ff;
+}
+
+td.highlighted {
+  background: #ffcccc;
 }
 
 td.rightBorder {
@@ -35,15 +40,16 @@ td.leftBorder{
 }
 
 tr.bigNumber{
-  text-align:center;
+  /*text-align:center;*/
   /*font-size: 1.5em;*/
-  background: #b3e6ff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
 
 
 }
 
-
+.foo {
+  background: lightgreen;
+}
 
 
 
@@ -51,15 +57,15 @@ tr.bigNumber{
 
 <table>
   <tr class = "topBorder bigNumber">
-    <td class = "leftBorder" id = "td0"></td>
-    <td id = "td1" ></td>
-    <td class = "rightBorder" id = "td2">  </td>
-    <td id = "td3"></td>
-    <td id = "td4"></td>
-    <td class = "rightBorder" id = "td5"></td>
-    <td id = "td6"></td>
-    <td id = "td7"></td>
-    <td class = "rightBorder" id = "td8"></td>
+    <td class = "leftBorder" ></td>
+    <td></td>
+    <td class = "rightBorder">  </td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
+    <td></td>
+    <td></td>
+    <td class = "rightBorder"></td>
   <tr>
     <td class = "leftBorder"></td>
     <td></td>
@@ -152,12 +158,15 @@ tr.bigNumber{
   stringOfNums = '004300209005009001070060043006002087190007400050083000600000105003508690042910300'
   console.log(stringOfNums[2])
   const rows = Array.from(document.querySelectorAll('tr'));
-  const cells = rows.map(
+  const matrix = rows.map(
     r => Array.from(r.querySelectorAll('td'))
     )
 
-  // numberOnList = '8'
-  function addGivenNumbers2(i){
+
+ 
+  function addGivenNumbers2(i){    
+  // TODO rename cellNum to cell 
+    // Functiuon adds the ith given number to the grid
     var cellNum = document.getElementById(`td${numberOnList}`);
     var text = document.createTextNode(stringOfNums[i]);
     // cellNum.appendChild(text);
@@ -166,14 +175,16 @@ tr.bigNumber{
     if (stringOfNums[i] !== "0"){
       console.log('the text is ', text)
       cellNum.appendChild(text);
+      cellNum.classList.add("preFilled")
+    }
+    if (i % 3 == "0") {
+      console.log('remainder is', i, (i % 3));
+      cellNum.classList.add("foo");
+    }
   }
-  }
 
-
-
-
-
-
+  
+// TODO change for to for "each"
 // labels each grid element with ID 0 - 80 
 var nodes = document.querySelectorAll("td");
 for(var i = 0; i < nodes.length; i++) {
@@ -182,60 +193,78 @@ for(var i = 0; i < nodes.length; i++) {
   nodes[i].setAttribute("id", `td${iString}`);
 }
 
-
+// TODO change to for (each)
 var i = 0;
-while (i < 81) {
-  // text += "The number is " + i;
+while (i < 81) {   //Loop to add the given number 81 times
   var numberOnList = i.toString(); 
   addGivenNumbers2(i)
   i++;
-  // console.log(numberOnList);
+}
+
+
+// function zeroNums() {
+//   matrix.forEach(row => {
+//       row.forEach(cell => {
+//         if (cell.id === "0"){
+//           console.log('This ID is zero:', cell.id)
+//         }
+
+         
+//       })
+//     })
+//   }
+
+// zeroNums()
+  
+
+window.onload = () => {
+  const rows = Array.from(document.querySelectorAll('tr'));
+  const matrix = rows.map(
+    r => Array.from(r.querySelectorAll('td'))
+    );
+
+  let active = {
+    row: 0,
+    col: 0
+  };
+
+document.addEventListener("keydown", event => {
+  if (event.key === 'ArrowDown') {
+    active.row = active.row + 1;
+    updateHighlights();
+  }
+})
+
+function updateHighlights() {
+  matrix.forEach(row => {
+    row.forEach(cell => {
+      cell.classList.remove('highlighted');
+    })
+  })
+
+  matrix[active.row][active.col].classList.add('highlighted');
+}
+
+updateHighlights();
+
+
+
+
 
 }
 
-  console.log(cells)
 
 
-function zeroNums() {
-  cells.forEach(row => {
-      row.forEach(cell => {
-        if (cell.id === 0){
-          console.log('This ID is zero:', cell.id)
-        }
 
-        // var numberOnList = i.toString();
-        // console.log(numberOnList)
-         
-      })
-    })
-  }
 
-zeroNums()
-  // addGivenNumbers()
-  
+
+
+
+
+
 
 </script>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- foreach number, assign that class and put it where it goes
-
- -->
