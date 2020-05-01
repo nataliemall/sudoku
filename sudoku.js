@@ -65,6 +65,8 @@ while (i < 81) {   //Loop to add the given number 81 times
   
 
 window.onload = () => {
+
+  NumberSizeSwitcher = false
   const rows = Array.from(document.querySelectorAll('tr'));
   const matrix = rows.map(
     r => Array.from(r.querySelectorAll('td'))
@@ -108,12 +110,47 @@ document.addEventListener("keydown", event => {
     if (matrix[active.row][active.col].classList.toString().includes("preFilled") === false) {
       console.log(matrix[active.row][active.col].classList)
 
-      if (event.key == i.toString()) {
-        matrix[active.row][active.col].innerHTML = i.toString();
 
-      } 
+      if (event.key === i.toString()) {
+        
+        if (matrix[active.row][active.col].innerHTML === i.toString()) {
+        // if (i === 1) {
+        console.log('TEST');
+        matrix[active.row][active.col].innerHTML = '';
+        } else {
+        matrix[active.row][active.col].innerHTML = i.toString();
+        }
+        if (NumberSizeSwitcher === true) {
+          className = ('small' + i.toString()).toString();
+          matrix[active.row][active.col].classList.add("smallNumber")
+          matrix[active.row][active.col].classList.add(className);
+        } else {
+          matrix[active.row][active.col].classList.remove("smallNumber");
+          matrix[active.row][active.col].classList.remove(className)
+        }
+      }
+
+
+      if (event.code === 'Space') {  //toggles between pencil notes and normal fill-in
+        console.log('Spacebar yay')
+        if (NumberSizeSwitcher === true) {
+          // matrix[active.row][active.col].classList.remove("smallNumberNext"); //removes pencil marks upon second space click
+          // matrix[active.row][active.col].classList.remove("small1");
+          NumberSizeSwitcher = false
+        } else {
+          NumberSizeSwitcher = true
+          matrix[active.row][active.col].classList.add("smallNumberNext");  //switches to pencil marks
+
+
+          // }
+          // }
+          }
+      }
+
+
     }
-  }
+
+    }
 
 if (matrix[active.row][active.col].classList.toString().includes("preFilled") === false) {
   if (event.key === 'Backspace') { // delete
@@ -121,7 +158,9 @@ if (matrix[active.row][active.col].classList.toString().includes("preFilled") ==
   }
 }
 
-})
+}) //These are for end of event listener
+
+
 
 function updateHighlights() {
   matrix.forEach(row => {
@@ -138,11 +177,14 @@ updateHighlights();
 
 
 
-
-}
-
+} // onload
 
 
+// github pages
+// make it a function 
+// add little numbers 
+// get prettier 
+//
 
 
 
