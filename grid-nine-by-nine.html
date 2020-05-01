@@ -1,3 +1,6 @@
+
+
+
 <style>
 td {
   border: 1px solid black;
@@ -151,120 +154,7 @@ tr.bigNumber{
 
 
 
-
-
-<script>
-
-  stringOfNums = '004300209005009001070060043006002087190007400050083000600000105003508690042910300'
-  console.log(stringOfNums[2])
-  const rows = Array.from(document.querySelectorAll('tr'));
-  const matrix = rows.map(
-    r => Array.from(r.querySelectorAll('td'))
-    )
-
-
- 
-  function addGivenNumbers2(i){    
-  // TODO rename cellNum to cell 
-    // Functiuon adds the ith given number to the grid
-    var cellNum = document.getElementById(`td${numberOnList}`);
-    var text = document.createTextNode(stringOfNums[i]);
-    // cellNum.appendChild(text);
-
-    text_string = text.toString()
-    if (stringOfNums[i] !== "0"){
-      console.log('the text is ', text)
-      cellNum.appendChild(text);
-      cellNum.classList.add("preFilled")
-    }
-    if (i % 3 == "0") {
-      console.log('remainder is', i, (i % 3));
-      cellNum.classList.add("foo");
-    }
-  }
-
-  
-// TODO change for to for "each"
-// labels each grid element with ID 0 - 80 
-var nodes = document.querySelectorAll("td");
-for(var i = 0; i < nodes.length; i++) {
-  var iString = i.toString();
-  console.log('iString is ', iString)
-  nodes[i].setAttribute("id", `td${iString}`);
-}
-
-// TODO change to for (each)
-var i = 0;
-while (i < 81) {   //Loop to add the given number 81 times
-  var numberOnList = i.toString(); 
-  addGivenNumbers2(i)
-  i++;
-}
-
-
-// function zeroNums() {
-//   matrix.forEach(row => {
-//       row.forEach(cell => {
-//         if (cell.id === "0"){
-//           console.log('This ID is zero:', cell.id)
-//         }
-
-         
-//       })
-//     })
-//   }
-
-// zeroNums()
-  
-
-window.onload = () => {
-  const rows = Array.from(document.querySelectorAll('tr'));
-  const matrix = rows.map(
-    r => Array.from(r.querySelectorAll('td'))
-    );
-
-  let active = {
-    row: 0,
-    col: 0
-  };
-
-document.addEventListener("keydown", event => {
-  if (event.key === 'ArrowDown') {
-    active.row = active.row + 1;
-    updateHighlights();
-  }
-})
-
-function updateHighlights() {
-  matrix.forEach(row => {
-    row.forEach(cell => {
-      cell.classList.remove('highlighted');
-    })
-  })
-
-  matrix[active.row][active.col].classList.add('highlighted');
-}
-
-updateHighlights();
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
+<script src="sudoku.js"></script>
 
 
 
