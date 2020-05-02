@@ -63,12 +63,33 @@ while (i < 81) {   //Loop to add the given number 81 times
 //   }
 
 // zeroNums()
-  
+function pencilFunction(){
+if (NumberSizeSwitcher === true) {
+NumberSizeSwitcher = false
+} else {
+NumberSizeSwitcher = true
+}}  
+
+
+// function amIdone(puzzleStatus2){
+//   if ( puzzleStatus2 === 'wonAndDone') {
+//     document.getElementById("demo").innerHTML = 'You did indeed win!';
+//     document.getElementById("demo").innerHTML.fontcolor("blue")
+//     // document.write(str.fontcolor( "blue" )
+//   }
+// }
 
 window.onload = () => {
 
   NumberSizeSwitcher = false // True when it's a small number 
   containsBigNumber = false
+
+  // function pencilFunction(){
+  // if (NumberSizeSwitcher === true) {
+  // NumberSizeSwitcher = false
+  // } else {
+  // NumberSizeSwitcher = true
+  // }}
 
   const rows = Array.from(document.querySelectorAll('tr'));
   const matrix = rows.map(
@@ -144,7 +165,7 @@ document.addEventListener("keydown", event => {
         }
 
 
-        checkSolved()
+        var testSolved = checkSolved()
       }
 
 
@@ -239,29 +260,49 @@ function checkSolved(){
 
 
   if ((rowsComplete === true) && (columnsComplete === true)){
-    document.getElementById("sudokuSquare") 
+    var pencilMarks = false;
+    document.getElementById("sudokuSquare") ;
     
     const allCells = Array.from(document.querySelectorAll('td'));
     // if allCells
     // var stylesInSquare = document.getElementById("sudokuSquare").classList;
     var pencilStyle = document.getElementsByClassName("smallNumber");
     if (pencilStyle.length) {
-      console.log('Still includes pencil marks')
-      var pencilMarks = true
+      console.log('Still includes pencil marks');
+      var pencilMarks = true;
     }
     // var stylesInSquare.style[cssProperty]
     if (pencilMarks !== true){
-      console.log('I think you have completed the puzzle!')}
+      console.log('I think you have completed the puzzle!')};
+      var puzzleStatus = 'wonAndDone';
   }
 
+  if (puzzleStatus === "wonAndDone") {
+  // document.getElementById("demo").innerHTML = 'You did indeed win!';
+  var img = document.createElement("img");
+   
+  img.src = "PixelArt.png";
+  var src = document.getElementById("demo");
+   
+//   document.getElementById("demo").absolute {
+//   position: absolute;
+//   top: 80px;
+//   right: 0;
+//   width: 200px;
+//   height: 100px;
+//   border: 3px solid #73AD21;
+// }
+  src.appendChild(img);
+  }
 
+return puzzleStatus; 
 }
 
 
-checkSolved();
+var puzzleStatus = checkSolved();   // how do we form function statements like this
 
 
-if (pencilMarks !== true) {
+if (puzzleStatus !== true) {
 
   // <!DOCTYPE html>
   // <html>
