@@ -6,13 +6,17 @@ td {
   border: 1px solid black;
   height: 50px;
   width: 50px;
+  word-break:break-all;
 
 }
+
+/*<td style="word-break:break-all;">longtextwithoutspace</td>*/
 
 table { border-collapse: collapse; 
   font-size: 1.5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center}
+  text-align: center};
+  /*table-layout: fixed; */
 
 tr, td { padding: 0; }
 
@@ -47,6 +51,9 @@ td.smallNumber{
   font-size: 0.5em;
   text-align:left;
   color: #808080;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  vertical-align: top;
 
 }
 
@@ -54,10 +61,10 @@ td.smallNumberNext{
   /* adds a small number the next click  */
 }
 
-
+/*
 td.small1{
   vertical-align: text-top;
-}
+}*/
 
 .foo {
   background: lightgreen;
@@ -69,7 +76,7 @@ td.small1{
 
 <table>
   <tr class = "topBorder bigNumber">
-    <td class = "leftBorder" ></td>
+    <td class = "leftBorder" style="word-break:break-all;" ></td>
     <td></td>
     <td class = "rightBorder">  </td>
     <td></td>

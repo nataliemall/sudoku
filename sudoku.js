@@ -66,7 +66,8 @@ while (i < 81) {   //Loop to add the given number 81 times
 
 window.onload = () => {
 
-  NumberSizeSwitcher = false
+  NumberSizeSwitcher = false // True when it's a small number 
+  containsBigNumber = false
   const rows = Array.from(document.querySelectorAll('tr'));
   const matrix = rows.map(
     r => Array.from(r.querySelectorAll('td'))
@@ -111,23 +112,49 @@ document.addEventListener("keydown", event => {
       console.log(matrix[active.row][active.col].classList)
 
 
-      if (event.key === i.toString()) {
+      if (event.key === i.toString()) {  //i.e. if a 5 is pressed
         
-        if (matrix[active.row][active.col].innerHTML === i.toString()) {
-        // if (i === 1) {
-        console.log('TEST');
-        matrix[active.row][active.col].innerHTML = '';
-        } else {
-        matrix[active.row][active.col].innerHTML = i.toString();
-        }
-        if (NumberSizeSwitcher === true) {
-          className = ('small' + i.toString()).toString();
-          matrix[active.row][active.col].classList.add("smallNumber")
-          matrix[active.row][active.col].classList.add(className);
-        } else {
+        // className = ('small' + i.toString()).toString();
+        if (NumberSizeSwitcher === true){  // if mode is set to small number 
+          matrix[active.row][active.col].classList.add("smallNumber");
+          // matrix[active.row][active.col].classList.add(className);
+          if (containsBigNumber === true) {
+            matrix[active.row][active.col].innerHTML = ''; // delete the big number if it contains it
+            containsBigNumber = false;
+          } else if (matrix[active.row][active.col].innerHTML.includes(i.toString()) === false){ //if small number is already included
+            console.log('Small number was included here')
+            matrix[active.row][active.col].innerHTML = matrix[active.row][active.col].innerHTML + i.toString(); //concat here
+            // if lenght is 
+
+            // matrix[active.row][active.col].innerHTML = matrix[active.row][active.col].innerHTML.replace(i.toString(), '')
+            // matrix[active.row][active.col].innerHTML = 'TEST';
+          }
+          containsBigNumber = false;
+        } else { //if mode is set to big number 
           matrix[active.row][active.col].classList.remove("smallNumber");
-          matrix[active.row][active.col].classList.remove(className)
+          // matrix[active.row][active.col].classList.remove(className)
+          matrix[active.row][active.col].innerHTML = i.toString();
+          containsBigNumber = true; 
         }
+
+
+
+
+        // if (matrix[active.row][active.col].innerHTML === i.toString()) {
+        // // if (i === 1) {
+        // console.log('TEST');
+        // matrix[active.row][active.col].innerHTML = '';
+        // } else {
+        // matrix[active.row][active.col].innerHTML = i.toString();
+        // }
+        // if (NumberSizeSwitcher === true) {
+        //   className = ('small' + i.toString()).toString();
+        //   matrix[active.row][active.col].classList.add("smallNumber")
+        //   matrix[active.row][active.col].classList.add(className);
+        // } else {
+        //   matrix[active.row][active.col].classList.remove("smallNumber");
+        //   matrix[active.row][active.col].classList.remove(className)
+        // }
       }
 
 
@@ -139,7 +166,7 @@ document.addEventListener("keydown", event => {
           NumberSizeSwitcher = false
         } else {
           NumberSizeSwitcher = true
-          matrix[active.row][active.col].classList.add("smallNumberNext");  //switches to pencil marks
+          // matrix[active.row][active.col].classList.add("smallNumberNext");  //switches to pencil marks
 
 
           // }
